@@ -1,23 +1,26 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Ignore node_modules directory
+node_modules/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
+# Ignore any files or directories that begin with a dot
+.*.swp
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# Ignore log files
+*.log
+
+# Ignore compiled binary files
+*.exe
+*.out
+*.o
+*.a
+
+# Ignore package-lock.json for npm
+package-lock.json
+
+# Ignore yarn.lock for yarn
+yarn.lock
+
+# Ignore build output
+build/
+dist/
+out/

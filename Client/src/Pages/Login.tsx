@@ -36,6 +36,7 @@ export default function SignIn() {
     const data = new FormData(event.currentTarget);
     const payload: any = {
       email: data.get('email'),
+      password: data.get('password'),
     }
     const res: any = await loginUser(payload);
     if (res?.success) {
