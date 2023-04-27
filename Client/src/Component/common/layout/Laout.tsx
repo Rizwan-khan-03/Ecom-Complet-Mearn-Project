@@ -157,7 +157,7 @@ export default function Layout() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" >
         <Toolbar>
           <IconButton
             size="large"
@@ -185,7 +185,40 @@ export default function Layout() {
               inputProps={{ 'aria-label': 'search' }}
             />
           </Search>
-          <Box sx={{ flexGrow: 1 }} />
+          <Box sx={{ flexGrow: 1 }}>
+          <Typography
+            variant="h6"
+            noWrap
+            component="span"
+            sx={{ display: { xs: 'none', sm: 'inline-block' },    padding: "0px 10px" }}
+          >
+            MUI
+          </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component="span"
+            sx={{ display: { xs: 'none', sm: 'inline-block' },    padding: "0px 10px" }}
+          >
+            MUI
+          </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component="span"
+            sx={{ display: { xs: 'none', sm: 'inline-block' },    padding: "0px 10px" }}
+          >
+            MUI
+          </Typography>
+          <Typography
+            variant="h6"
+            noWrap
+            component="span"
+            sx={{ display: { xs: 'none', sm: 'inline-block' },    padding: "0px 10px" }}
+          >
+            MUI
+          </Typography>
+          </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="error">
