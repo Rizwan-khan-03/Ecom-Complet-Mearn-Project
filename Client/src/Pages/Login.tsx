@@ -5,37 +5,45 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { loginUser, setToken } from '../Config/Service/Service';
+import { useNavigate, Link } from 'react-router-dom';
 
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="">
+      <Link color="inherit" to="">
         Fashoin Bazar
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
   );
-}   
+}
 
 const theme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const navigate = useNavigate()
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const payload: any = {
       email: data.get('email'),
-      password: data.get('password'),
-    });
+    }
+    const res: any = await loginUser(payload);
+    if (res?.success) {
+      setToken(res?.accesToken)
+      navigate("/h2")
+    } else {
+      console.log("res", res?.message);
+    }
   };
 
   return (
@@ -91,12 +99,12 @@ export default function SignIn() {
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
+                <Link to="#" >
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to="/register" >
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

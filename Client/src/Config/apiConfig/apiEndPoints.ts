@@ -8,11 +8,8 @@ const apiEndPoints = {
   },
 
   //OnBoarding-------
-  Login: "sadmin/login",
-  GetUserList:'sadmin/get_users_list',
-  UserDetails:"sadmin/get_user_detail",
-  CompanyList:"sadmin/get_company_list",
-
+  Login: "user/login",
+  Register: "user/register",
 };
 
 export default apiEndPoints;

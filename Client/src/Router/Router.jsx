@@ -3,6 +3,7 @@ import ProtectRoutes from './ProtectRoutes'
 import AuthPoint from "./Auth";
 import Layout from "../Component/common/layout/Laout";
 import SignIn from "../Pages/Login";
+import SignUp from "../Pages/Register";
 
 function Router() {
   return (
@@ -10,6 +11,7 @@ function Router() {
       <Routes>
         <Route path='/'>
           <Route index element={<AuthPoint Component={SignIn} />} />
+          <Route path='/register' element={<AuthPoint Component={SignUp} />} />
         </Route>
         <Route path='/*'>
           <Route index path='*' element={<ProtectRoutes Component={Layout} />} />

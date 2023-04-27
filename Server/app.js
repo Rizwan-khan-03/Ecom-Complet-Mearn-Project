@@ -3,7 +3,7 @@ require("./src/startup/index")(app);
 module.exports = app;
 
 const http = require("http");
-const port =  "8000";
+const port =  "5000";
 const logger = require("./src/utils/logger");
 const cors = require("cors");
 

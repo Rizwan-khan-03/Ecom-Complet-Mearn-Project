@@ -14,14 +14,14 @@ export const setToken = (Name: any) => {
   };
 
   /// Login API ////
-  export const loginAdmin = async ({ username, password }:any) => {
+  export const loginUser = async ({ email,firstName,lastName,password,isAdmin }:any) => {
     try {
      const response = await fetch(AppConfig?.baseURL + apiEndPoints?.Login, {
        method: apiEndPoints?.methodType?.POST,
        headers: {
          'Content-Type': 'application/json'
        },
-       body: JSON.stringify({ username, password })
+       body: JSON.stringify({ email, firstName, lastName,password,isAdmin})
      });
      if (response) {
       return response.json();
@@ -33,63 +33,24 @@ export const setToken = (Name: any) => {
    }
  }
 
- // Get User List GetUserList  /////
- export const GetUserList = async (payload:any) => {
+ //register
+ export const RegisterUser = async ({ email,firstName,lastName,password,isAdmin }:any) => {
   try {
-   const response = await fetch(AppConfig?.baseURL + apiEndPoints?.GetUserList, {
+   const response = await fetch(AppConfig?.baseURL + apiEndPoints?.Register, {
      method: apiEndPoints?.methodType?.POST,
      headers: {
        'Content-Type': 'application/json'
      },
-      body: JSON.stringify(payload)
+     body: JSON.stringify({ email, firstName, lastName,password,isAdmin})
    });
    if (response) {
     return response.json();
    } else {
-    throw new Error('GetUserList failed');
+    throw new Error('Login failed');
    }
  } catch (error) {
    return   console.error(error);
  }
 }
 
-// User details  /////
-export const GetUserDetails = async (payload:any) => {
-  try {
-   const response = await fetch(AppConfig?.baseURL + apiEndPoints?.UserDetails, {
-     method: apiEndPoints?.methodType?.POST,
-     headers: {
-       'Content-Type': 'application/json'
-     },
-      body: JSON.stringify(payload)
-   });
-   if (response) {
-    return response.json();
-   } else {
-    throw new Error('GetUserDetails failed');
-   }
- } catch (error) {
-   return   console.error(error);
- }
-}
 
-////Company List //////
-
-export const GeCompanyList = async (payload:any) => {
-  try {
-   const response = await fetch(AppConfig?.baseURL + apiEndPoints?.CompanyList, {
-     method: apiEndPoints?.methodType?.POST,
-     headers: {
-       'Content-Type': 'application/json'
-     },
-      body: JSON.stringify(payload)
-   });
-   if (response) {
-    return response.json();
-   } else {
-    throw new Error('GeCompanyList failed');
-   }
- } catch (error) {
-   return   console.error(error);
- }
-}
