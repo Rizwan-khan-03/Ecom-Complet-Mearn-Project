@@ -38,6 +38,7 @@ export default function SignIn() {
       email: data.get('email'),
     }
     const res: any = await loginUser(payload);
+    console.log("res", res?.message);
     if (res?.success) {
       setToken(res?.accesToken)
       navigate("/h2")
