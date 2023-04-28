@@ -15,6 +15,11 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import MoreIcon from '@mui/icons-material/MoreVert';
+import Header from '../Haeder';
+import Haeder from '../Haeder';
+import { routepath } from '../../../Router/RouteList';
+import { Routes, Route, Navigate } from "react-router-dom";
+import PrivateRoute from '../../../Router/ProtectRoutes';
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -186,38 +191,15 @@ export default function Layout() {
             />
           </Search>
           <Box sx={{ flexGrow: 1 }}>
-          <Typography
-            variant="h6"
-            noWrap
-            component="span"
-            sx={{ display: { xs: 'none', sm: 'inline-block' },    padding: "0px 10px" }}
-          >
-            MUI
-          </Typography>
-          <Typography
-            variant="h6"
-            noWrap
-            component="span"
-            sx={{ display: { xs: 'none', sm: 'inline-block' },    padding: "0px 10px" }}
-          >
-            MUI
-          </Typography>
-          <Typography
-            variant="h6"
-            noWrap
-            component="span"
-            sx={{ display: { xs: 'none', sm: 'inline-block' },    padding: "0px 10px" }}
-          >
-            MUI
-          </Typography>
-          <Typography
-            variant="h6"
-            noWrap
-            component="span"
-            sx={{ display: { xs: 'none', sm: 'inline-block' },    padding: "0px 10px" }}
-          >
-            MUI
-          </Typography>
+            <Typography
+              // variant="p"
+              noWrap
+              component="span"
+              sx={{ display: { xs: 'none', sm: 'inline-block' }, padding: "0px 10px" }}
+            >
+              MUI
+            </Typography>
+
           </Box>
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <IconButton size="large" aria-label="show 4 new mails" color="inherit">
@@ -262,6 +244,29 @@ export default function Layout() {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      <Box sx={{ flexGrow: 1 }}>
+        <Haeder />
+      </Box>
+      <Box sx={{ flexGrow: 1 }}>
+      <Routes>
+        {routepath.map((i: any, index: any) => {
+          if (i.private) {
+            return (
+              <Route
+                key={`routes_${index}`}
+                path={i.path}
+                element={<PrivateRoute Component={i.Element} />}
+                
+              />
+            );
+          } else {
+            return (
+              <Route key={`routes_${index}`} path="*" element={<h6>notfound</h6>} />
+            );
+          }
+        })}
+      </Routes>
+      </Box>
     </Box>
   );
 }

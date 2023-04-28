@@ -1,14 +1,9 @@
 
+import Groceriess from "../Component/maincomponent/Grocery/Groceriess";
+import Mobiles from "../Component/maincomponent/Mobiless/Mobiles";
+import Product from "../Component/maincomponent/Products/Product";
 import Login from "../Pages/Login";
-import Dashboard from "../components/Maincomponent/Dashboard/Dashboard";
-import Layout from "../components/Common/Layout/Layout";
-import Company from "../components/Maincomponent/Company/Company";
-import MaterialCategory from "../components/Maincomponent/MaterialCategory/MaterialCategory";
-import Users from "../components/Maincomponent/Users/Users";
-import VehicleType from "../components/Maincomponent/VehicleType/VehicleType";
-import NoteFound from "../components/Common/Layout/NoteFound";
-import UserDetails from "../components/Maincomponent/Users/UserDetails";
-import Banner from "../components/Maincomponent/Banner/Banner";
+
 //UserDetails
 export const routepath = [
   {
@@ -16,74 +11,48 @@ export const routepath = [
     Element: Login,
     private: false,
   },
-  // {
-  //   path: "/dashboard",
-  //   Element: Dashboard,
-  //   private: true,
-  // },
-  // {
-  //   path: "/company",
-  //   Element: Company,
-  //   private: true,
-  // },
-  // {
-  //   path: "/materialCategory",
-  //   Element: MaterialCategory,
-  //   private: true,
-  // },
-  // {
-  //   path: "/users",
-  //   Element: Users,
-  //   private: true,
-  // },
-  // {
-  //   path: "/users/:id",
-  //   Element: UserDetails,
-  //   private: true,
-  // },
-  // {
-  //   path: "/vehicleType",
-  //   Element: VehicleType,
-  //   private: true,
-  // },
-  // {
-  //   path: "/banner",
-  //   Element: Banner,
-  //   private: true,
-  // },
- 
-
+  {
+    path: "/product",
+    Element: Product,
+    private: true,
+  },
+  {
+    path: "/grocery",
+    Element: Groceriess,
+    private: true,
+  },
+  {
+    path: "/mobiles",
+    Element: Mobiles,
+    private: true,
+  },
 ];
 export const routeLink = [
   {
-    link:"dashboard",
-    name:'Dashboard',
+    link:"grocery",
+    name:'Grocery',
     className: 'anvDash_icon'
   },
   {
-    link:'company',
-    name:'Company',
+    link:'mobiles',
+    name:'Mobiles',
     className: 'anvComp_icon'
   },
   {
-    link:'materialCategory',
-    name:'Material Category',
+    link:'fashion',
+    name:'fashion ',
     className: 'anvMc_icon'
   },
   {
-    link:'users',
-    name:'Users',
+    link:'electronics',
+    name:'Electronics',
     className: 'anvUser_icon'
   },
   {
-    link:'VehicleType',
-    name:'Vehicle Type',
+    link:'home',
+    name:'Home',
     className: 'anvVt_icon'
   },
-  {
-    link:'banner',
-    name:'Banner',
-    className: 'anvVt_icon'
-  },
+ 
 ]
 
