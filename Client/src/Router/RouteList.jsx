@@ -1,14 +1,20 @@
 
+import Appliances from "../Component/maincomponent/Apliances/Appliances";
+import Beauty from "../Component/maincomponent/Beauty/Beauty";
+import Groceriess from "../Component/maincomponent/Grocery/Groceriess";
+import Mobiles from "../Component/maincomponent/Mobiless/Mobiles";
+import Product from "../Component/maincomponent/Products/Product";
 import Login from "../Pages/Login";
-import Dashboard from "../components/Maincomponent/Dashboard/Dashboard";
-import Layout from "../components/Common/Layout/Layout";
-import Company from "../components/Maincomponent/Company/Company";
-import MaterialCategory from "../components/Maincomponent/MaterialCategory/MaterialCategory";
-import Users from "../components/Maincomponent/Users/Users";
-import VehicleType from "../components/Maincomponent/VehicleType/VehicleType";
-import NoteFound from "../components/Common/Layout/NoteFound";
-import UserDetails from "../components/Maincomponent/Users/UserDetails";
-import Banner from "../components/Maincomponent/Banner/Banner";
+import applinces from './img/applinces.jpg'
+import electronics from './img/elec.jpg'
+import fashion from './img/fashion.jpg'
+import furniture from './img/furniture.jpg'
+import groce from './img/Groceriess.jpg'
+import moblies from './img/moblies.jpg'
+import beauty from './img/beauty.jpg'
+import home from './img/home.jpg'
+
+
 //UserDetails
 export const routepath = [
   {
@@ -16,74 +22,68 @@ export const routepath = [
     Element: Login,
     private: false,
   },
-  // {
-  //   path: "/dashboard",
-  //   Element: Dashboard,
-  //   private: true,
-  // },
-  // {
-  //   path: "/company",
-  //   Element: Company,
-  //   private: true,
-  // },
-  // {
-  //   path: "/materialCategory",
-  //   Element: MaterialCategory,
-  //   private: true,
-  // },
-  // {
-  //   path: "/users",
-  //   Element: Users,
-  //   private: true,
-  // },
-  // {
-  //   path: "/users/:id",
-  //   Element: UserDetails,
-  //   private: true,
-  // },
-  // {
-  //   path: "/vehicleType",
-  //   Element: VehicleType,
-  //   private: true,
-  // },
-  // {
-  //   path: "/banner",
-  //   Element: Banner,
-  //   private: true,
-  // },
- 
-
+  {
+    path: "/product",
+    Element: Product,
+    private: true,
+  },
+  {
+    path: "/grocery",
+    Element: Groceriess,
+    private: true,
+  },
+  {
+    path: "/mobiles",
+    Element: Mobiles,
+    private: true,
+  },
+  {
+    path: "/applances",
+    Element: Appliances,
+    private: true,
+  },
+  {
+    path: "/beauty",
+    Element: Beauty,
+    private: true,
+  },
 ];
 export const routeLink = [
   {
-    link:"dashboard",
-    name:'Dashboard',
-    className: 'anvDash_icon'
+    link:"grocery",
+    name:'Grocery',
+    img: groce,
   },
   {
-    link:'company',
-    name:'Company',
-    className: 'anvComp_icon'
+    link:'mobiles',
+    name:'Mobiles',
+    img: moblies
   },
   {
-    link:'materialCategory',
-    name:'Material Category',
-    className: 'anvMc_icon'
+    link:'fashion',
+    name:'fashion ',
+    img: fashion
   },
   {
-    link:'users',
-    name:'Users',
-    className: 'anvUser_icon'
+    link:'electronics',
+    name:'Electronics',
+    img: electronics
   },
   {
-    link:'VehicleType',
-    name:'Vehicle Type',
-    className: 'anvVt_icon'
+    link:'home',
+    name:'Home',
+    img: home
   },
   {
-    link:'banner',
-    name:'Banner',
-    className: 'anvVt_icon'
+    link:'applances',
+    name:'Applances',
+    img: furniture
   },
+  {
+    link:'beauty',
+    name:'Beauty',
+    img: beauty
+  },
+ 
 ]
 

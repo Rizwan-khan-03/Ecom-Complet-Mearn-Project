@@ -25,6 +25,7 @@
   ],
     "types": [
       "@mui/material",
-      "@mui/icons-material"
+      "@mui/icons-material",
+      "@mui/styles"
     ]
 }
