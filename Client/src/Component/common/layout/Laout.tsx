@@ -1,21 +1,8 @@
 import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import Badge from '@mui/material/Badge';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
-import MailIcon from '@mui/icons-material/Mail';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import MoreIcon from '@mui/icons-material/MoreVert';
-import Header from '../Haeder';
+import { AppBar,Box,Toolbar,IconButton,Typography,InputBase,Badge,MenuItem,Menu,Grid,} from '@mui/material';
+import {Menu as MenuIcon,Search as SearchIcon,AccountCircle,Mail as MailIcon,Notifications as NotificationsIcon,MoreVert as MoreIcon,
+} from '@mui/icons-material';
 import Haeder from '../Haeder';
 import { routepath } from '../../../Router/RouteList';
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -51,7 +38,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   color: 'inherit',
   '& .MuiInputBase-input': {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
     transition: theme.transitions.create('width'),
     width: '100%',
@@ -162,111 +148,105 @@ export default function Layout() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" >
-        <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="open drawer"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: 'none', sm: 'block' } }}
-          >
-            MUI
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 1 }}>
-            <Typography
-              // variant="p"
-              noWrap
-              component="span"
-              sx={{ display: { xs: 'none', sm: 'inline-block' }, padding: "0px 10px" }}
-            >
-              MUI
-            </Typography>
+      <Grid container spacing={1}>
+        <Grid item xs={12} md={12}>
+          <AppBar position="fixed" >
+            <Toolbar>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="open drawer"
+                sx={{ mr: 2 }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography
+                variant="h6"
+                noWrap
+                component="div"
+                sx={{ display: { xs: 'none', sm: 'block' } }}
+              >
+                MUI
+              </Typography>
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ 'aria-label': 'search' }}
+                />
+              </Search>
+              <Box sx={{ flexGrow: 1 }}></Box>
+              <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+                  <Badge badgeContent={4} color="error">
+                    <MailIcon />
+                  </Badge>
+                </IconButton>
+                <IconButton
+                  size="large"
+                  aria-label="show 17 new notifications"
+                  color="inherit"
+                >
+                  <Badge badgeContent={17} color="error">
+                    <NotificationsIcon />
+                  </Badge>
+                </IconButton>
+                <IconButton
+                  size="large"
+                  edge="end"
+                  aria-label="account of current user"
+                  aria-controls={menuId}
+                  aria-haspopup="true"
+                  onClick={handleProfileMenuOpen}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+              </Box>
+              <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+                <IconButton
+                  size="large"
+                  aria-label="show more"
+                  aria-controls={mobileMenuId}
+                  aria-haspopup="true"
+                  onClick={handleMobileMenuOpen}
+                  color="inherit"
+                >
+                  <MoreIcon />
+                </IconButton>
+              </Box>
+            </Toolbar>
+            <Haeder />
+          </AppBar>
+          {renderMobileMenu}
+          {renderMenu}
+        </Grid>
+      </Grid>
+      <Grid item xs={12} md={12}>
+      <Box sx={{ flexGrow: 1, marginTop: '110px' }}>
+        <Routes>
+          {routepath.map((i: any, index: any) => {
+            if (i.private) {
+              return (
+                <Route
+                  key={`routes_${index}`}
+                  path={i.path}
+                  element={<PrivateRoute Component={i.Element} />}
 
-          </Box>
-          <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-            <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="error">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label="show 17 new notifications"
-              color="inherit"
-            >
-              <Badge badgeContent={17} color="error">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MoreIcon />
-            </IconButton>
-          </Box>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-      <Box sx={{ flexGrow: 1 }}>
-        <Haeder />
+                />
+              );
+            } else {
+              return (
+                <Route key={`routes_${index}`} path="*" element={<h6>notfound</h6>} />
+              );
+            }
+          })}
+        </Routes>
       </Box>
-      <Box sx={{ flexGrow: 1 }}>
-      <Routes>
-        {routepath.map((i: any, index: any) => {
-          if (i.private) {
-            return (
-              <Route
-                key={`routes_${index}`}
-                path={i.path}
-                element={<PrivateRoute Component={i.Element} />}
-                
-              />
-            );
-          } else {
-            return (
-              <Route key={`routes_${index}`} path="*" element={<h6>notfound</h6>} />
-            );
-          }
-        })}
-      </Routes>
-      </Box>
+      </Grid>
     </Box>
   );
 }

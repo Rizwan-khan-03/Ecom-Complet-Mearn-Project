@@ -2,20 +2,10 @@ const {ProductModal} = require("../models/index");
 const logger = require("../../../utils/logger");
 module.exports = async (req, res) => {
 	try {
-		const {title, desc, img,categories,size,color,price,product_code} =req.body;
-
-		let product = {
-			title,
-			desc,
-			img,
-			categories,
-			size,
-			color,
-			price,
-			product_code
-		};
-		const sameUserExist = await ProductModal.exists({title,product_code});
-		if (sameUserExist) throw Error(`Product with title(${title}) and product_code(${product_code}) already exist.`);
+		const {title,brand, desc, img,categories,size,color,price,productCode,features,discountPercentage,ratings} =req.body;
+		let product = {title,brand,desc,img,categories,size,color,price,productCode,features,discountPercentage,ratings};
+		const sameUserExist = await ProductModal.exists({productCode});
+		if (sameUserExist) throw Error(`Product with title(${title}) and productCode(${productCode}) already exist.`);
 
 		const newProduct = await new ProductModal(product).save();
 
