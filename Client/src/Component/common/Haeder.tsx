@@ -68,9 +68,9 @@
 
 // export default Header;
 import React from 'react';
-import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
+import { Link } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
@@ -104,16 +104,17 @@ const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
   padding: theme.spacing(1),
-  margin: theme.spacing(1),
+  margin: theme.spacing(0),
   textAlign: 'center',
   color: theme.palette.text.secondary,
+  borderRadius:0
 
 }));
 
 export default function Moblie() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={1}>
+    <Box sx={{ flexGrow: 1 }} >
+      <Grid container >
         <Grid item xs={12} md={12}>
           <Item>
             <Box sx={{ display: { xs: 'block', md: 'flex' }, justifyContent: 'center', }}>
