@@ -9,7 +9,7 @@ const AUTH_HEADERS = () => {
     headers: {
       'Content-Type': 'application/json',
       Accept: "application/json",
-      token: getToken(),
+      token: `Bearer ${getToken()}`,
     }
   }
 }

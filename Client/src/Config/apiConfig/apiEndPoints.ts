@@ -10,6 +10,10 @@ const apiEndPoints = {
   //OnBoarding-------
   Login: "user/login",
   Register: "user/register",
+
+  
+  ///mobile services
+  Mobile:"product",
 };
 
 export default apiEndPoints;
