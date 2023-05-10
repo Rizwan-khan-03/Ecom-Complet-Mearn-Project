@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React,{useState} from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -28,12 +28,22 @@ const FilterContainer = styled(Box)({
 });
 
 export default function Moblie() {
+  const [mobileList,setMobileList]=useState([])
   React.useEffect(() => {
     getListOfAllMobile()
   }, [])
   const getListOfAllMobile = async () => {
-    const res = await getAllMobileList();
-    console.log("response", res)
+    try {
+      const res:any = await getAllMobileList();
+      console.log("response", res)
+      if(res?.data?.success && res?.data?.responseCode === 200){
+        setMobileList(res?.data?.payload)
+      }
+      
+    } catch (error) {
+      console.log(error);
+      
+    }
   }
 
   return (
@@ -48,8 +58,8 @@ export default function Moblie() {
         <Grid item xs={12} md={9}>
           <FilterContainer>
             {
-              Array.from([1, 2, 3, 4, 5, 6, , 7, 8, 9, 10]).map((item, index) => (
-                <Item key={index + 1}><MobileList /></Item>
+              mobileList?.map((item, index) => (
+                <Item key={index + 1} ><MobileList data={item}/></Item>
               ))
             }
           </FilterContainer>

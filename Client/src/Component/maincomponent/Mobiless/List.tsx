@@ -49,11 +49,11 @@ const Rating = styled("p")(({ theme }) => ({
     "& span": {
         display: "block",
         marginRight: theme.spacing(1),
-        backgroundColor:'green',
+        backgroundColor: 'green',
         color: "#FFF",
         paddingRight: theme.spacing(0.5),
         paddingLeft: theme.spacing(1),
-        borderRadius:"5px"
+        borderRadius: "5px"
     },
     "& svg": {
         fill: "#FFC107",
@@ -84,7 +84,7 @@ type CustomButtonProps = {
     component?: React.ElementType;
     to: string;
 };
-export default function MobileList() {
+export default function MobileList({ data }: any) {
     return (
         <>
             <Link to={''} style={{ textDecoration: 'none', }}>
@@ -98,24 +98,26 @@ export default function MobileList() {
                             </Grid>
                             <Grid item xs={12} md={6}>
                                 <Item>
-                                    <MobileName>Mobile Name With (color and ram)</MobileName>
+                                    <MobileName>{data?.title.toUpperCase()} {" "} ({" "} {data?.features?.ram + " | " + data?.features?.rom}{" "} )
+                                    </MobileName>
+
                                     <Rating>
-                                        <span>4.3*
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24">
-                                            <path d="M0 0h24v24H0z" fill="none" />
-                                            <path d="M12 16.3l-5.83 3.54 1.69-6.18L3.56 9.16l6.22-.54L12 3l2.22 5.62 6.22.54-4.3 3.53 1.69 6.18L12 16.3z" />
-                                        </svg>
+                                        <span>{data?.ratings?.overallRating}*
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24">
+                                                <path d="M0 0h24v24H0z" fill="none" />
+                                                <path d="M12 16.3l-5.83 3.54 1.69-6.18L3.56 9.16l6.22-.54L12 3l2.22 5.62 6.22.54-4.3 3.53 1.69 6.18L12 16.3z" />
+                                            </svg>
                                         </span>
-                                        <span>200 Rating &amp; 199 Reviews</span>
+                                        <span>{data?.ratings?.totalRatings} Rating &amp; {data?.ratings?.totalReviews}  Reviews</span>
                                     </Rating>
                                     <FeatureList>
                                         <FeatureItem>
                                             <ul>
-                                                <li> <span>Ram</span> | <span>Rom</span> | <span>Upto</span> |</li>
-                                                <li> <span>screen size</span></li>
-                                                <li> <span>secondry camera </span>| <span>primary camera</span></li>
-                                                <li> <span> Battery capacity </span></li>
-                                                <li> <span> waranty </span></li>
+                                                <li> <span>{data?.features?.ram }</span> | <span>{data?.features?.rom}</span> | <span>Upto</span> |</li>
+                                                <li> <span>{data?.features?.screenSize }</span></li>
+                                                <li> <span>{data?.features?.secondaryCamera }</span>| <span>{data?.features?.primaryCamera }</span></li>
+                                                <li> <span> {data?.features?.batteryCapacity }</span></li>
+                                                <li> <span> {data?.features?.warranty }</span></li>
                                             </ul>
                                         </FeatureItem>
                                     </FeatureList>
@@ -123,10 +125,10 @@ export default function MobileList() {
                             </Grid>
                             <Grid item xs={12} md={3}>
                                 <Item>
-                                    <MobileName>Price</MobileName>
+                                    <MobileName>{`${data?.price}${" "} IN` }</MobileName>
                                     <MobilePrice>
-                                        <span style={{ paddingRight: '10px' }}>og price</span>
-                                        <MobilePercent>{'30'}% off</MobilePercent>
+                                        <span style={{ paddingRight: '10px' }}>original price</span>
+                                        <MobilePercent>{data?.discountPercentage}% off</MobilePercent>
                                     </MobilePrice>
                                     <MobilePrice>Free Delivery</MobilePrice>
                                     <MobilePrice><MobilePercent>Top Discount on sale </MobilePercent></MobilePrice>
