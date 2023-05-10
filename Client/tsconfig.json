@@ -26,6 +26,9 @@
     "types": [
       "@mui/material",
       "@mui/icons-material",
-      "@mui/styles"
+      "@mui/styles",
+      "react", 
+      "react-dom", 
+      "react-redux"
     ]
 }

@@ -2,12 +2,12 @@ const { ProductModal } = require("../models");
 
 module.exports = async (req, res) => {
 	try {
-		const user = await ProductModal.findById(req.params.id);
-		const { password, ...others } = user._doc;
+		const product = await ProductModal.findById(req.params.id);
+		const { password, ...others } = product._doc;
 		console.log(others);
 		res.status(200).send({
 			payload: others,
-			message: "User exist  ...",
+			message: "product exist  ...",
 			responseCode: 200
 		})
 	} catch (err) {

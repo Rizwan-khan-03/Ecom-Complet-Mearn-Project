@@ -14,14 +14,14 @@ export const setToken = (Name: any) => {
   };
 
   /// Login API ////
-  export const loginUser = async ({ email,firstName,lastName,password,isAdmin }:any) => {
+  export const loginUser = async (data:any) => {
     try {
      const response = await fetch(AppConfig?.baseURL + apiEndPoints?.Login, {
        method: apiEndPoints?.methodType?.POST,
        headers: {
          'Content-Type': 'application/json'
        },
-       body: JSON.stringify({ email, firstName, lastName,password,isAdmin})
+       body: JSON.stringify(data?.payload)
      });
      if (response) {
       return response.json();

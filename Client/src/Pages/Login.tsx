@@ -1,4 +1,4 @@
-import * as React from 'react';
+import  React,{useEffect,useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,7 +13,8 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { loginUser, setToken } from '../Config/Service/Service';
 import { useNavigate, Link } from 'react-router-dom';
-
+import * as action from '../store/Actions';
+import { useSelector, useDispatch } from 'react-redux'
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -31,20 +32,26 @@ const theme = createTheme();
 
 export default function SignIn() {
   const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const loginSuccess=useSelector((state:any)=>state?.authentication)
+  // Wait for the loginSuccess state to update
+  useEffect(() => {
+    if (loginSuccess?.data?.success) {
+      setToken(loginSuccess?.data?.accesToken);
+      navigate("/h2");
+    } else {
+      console.log("loginSuccess", loginSuccess?.data?.message);
+    }
+  }, [loginSuccess]);
+
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const payload: any = {
       email: data.get('email'),
       password: data.get('password'),
-    }
-    const res: any = await loginUser(payload);
-    if (res?.success) {
-      setToken(res?.accesToken)
-      navigate("/h2")
-    } else {
-      console.log("res", res?.message);
-    }
+    };
+    dispatch(action.getLogin(payload));
   };
 
   return (

@@ -3,13 +3,14 @@ const { ProductModal } = require("../models");
 module.exports = async (req, res) => {
   const query = req.query.id;
   try {
-    const users = query
+    const products = query
       ? await ProductModal.find().sort({ _id: -1 }).limit(5)
       : await ProductModal.find();
     res.status(200).send({
-      payload: users,
+      payload: products,
+      success: true,
       message: "all Product list  ...",
-      responseCode: 200
+      responseCode: 200,
     })
   } catch (err) {
     res.status(400).send({
