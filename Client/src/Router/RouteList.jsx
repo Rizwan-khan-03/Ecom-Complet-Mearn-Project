@@ -1,7 +1,7 @@
 
 import Appliances from "../Component/maincomponent/Apliances/Appliances";
 import Beauty from "../Component/maincomponent/Beauty/Beauty";
-import Groceriess from "../Component/maincomponent/Grocery/Groceriess";
+import Groceriess from "../Component/maincomponent/Grocery";
 import Mobiles from "../Component/maincomponent/Mobiless/Mobiles";
 import Product from "../Component/maincomponent/Products/Product";
 import Login from "../Pages/Login";
@@ -13,6 +13,10 @@ import groce from './img/Groceriess.jpg'
 import moblies from './img/moblies.jpg'
 import beauty from './img/beauty.jpg'
 import home from './img/home.jpg'
+import Home from "../Component/maincomponent/Home/Home";
+import Fashion from "../Component/maincomponent/Fashion/Fashion";
+import Electronics from "../Component/maincomponent/Electronics/Electronics";
+import SelectedMobileDetails from "../Component/maincomponent/Mobiless/SelectedMobileDetails";
 
 
 //UserDetails
@@ -23,8 +27,8 @@ export const routepath = [
     private: false,
   },
   {
-    path: "/product",
-    Element: Product,
+    path: "/home",
+    Element: Home,
     private: true,
   },
   {
@@ -36,7 +40,24 @@ export const routepath = [
     path: "/mobiles",
     Element: Mobiles,
     private: true,
+  }, 
+  {
+    path: "/mobiles/:id",
+    Element: SelectedMobileDetails,
+    private: true,
+  }, 
+  {
+    path: "/fashion",
+    Element: Fashion,
+    private: true,
   },
+  {
+    path: "/electronics",
+    Element: Electronics,
+    private: true,
+  },
+ 
+ 
   {
     path: "/applances",
     Element: Appliances,
@@ -49,6 +70,11 @@ export const routepath = [
   },
 ];
 export const routeLink = [
+  {
+    link:'home',
+    name:'Home',
+    img: home
+  },
   {
     link:"grocery",
     name:'Grocery',
@@ -69,11 +95,7 @@ export const routeLink = [
     name:'Electronics',
     img: electronics
   },
-  {
-    link:'home',
-    name:'Home',
-    img: home
-  },
+ 
   {
     link:'applances',
     name:'Applances',

@@ -113,22 +113,77 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Moblie() {
   return (
-    <Box sx={{ flexGrow: 1 }} >
-      <Grid container >
-        <Grid item xs={12} md={12}>
-          <Item>
-            <Box sx={{ display: { xs: 'block', md: 'flex' }, justifyContent: 'center', }}>
+    // <Box sx={{ flexGrow: 1 }} >
+    //   <Grid container >
+    //     <Grid item xs={12} md={12}>
+    //       <Item>
+    //         <Box sx={{ display: { xs: 'flex', md: 'flex' }, justifyContent:'center' }}>
+    //           {routeLink.map((link: any, ind: any) => (
+    //             <CustomButton color="inherit" component={Link} to={link?.link}
+    //               sx={{ width: '10%', display: { xs: 'flex', md: 'flex' }, justifyContent: 'center', }}>
+    //               {link.name}
+    //             </CustomButton>
+    //           ))}
+    //         </Box>
+    //       </Item>
+    //     </Grid>
+    //   </Grid>
+    // </Box>
+
+    <Box sx={{ flexGrow: 1 }}>
+    <Grid container>
+      <Grid item xs={12} md={12}>
+        <Item>
+          <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              overflowX: 'auto',
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              },
+              '-ms-overflow-style': 'none',
+              scrollbarWidth: 'none',
+            }}
+          >
+            <Box
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                mx: 1,
+                py: 0,
+                overflow: 'auto',
+                scrollBehavior: 'smooth',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
               {routeLink.map((link: any, ind: any) => (
-                <CustomButton color="inherit" component={Link} to={link?.link}
-                  sx={{ width: '10%', display: { xs: 'block', md: 'flex' }, justifyContent: 'start', }}>
+                <CustomButton
+                  key={ind}
+                  color="inherit"
+                  component={Link}
+                  to={link?.link}
+                  sx={{
+                    whiteSpace: 'nowrap',
+                    mx: 0.5,
+                    fontSize: { xs: '12px', md: 'inherit' },
+                    marginLeft:"5px",
+                    padding:'5px',
+                    
+                    
+                  }}
+                >
                   {link.name}
                 </CustomButton>
               ))}
             </Box>
-          </Item>
-        </Grid>
+          </Box>
+        </Item>
       </Grid>
-    </Box>
+    </Grid>
+  </Box>
+  
+
   );
 }
 

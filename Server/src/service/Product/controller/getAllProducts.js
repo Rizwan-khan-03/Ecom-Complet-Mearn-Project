@@ -16,7 +16,8 @@ module.exports = async (req, res) => {
     res.status(400).send({
       payload: {},
       message: "some thing is wrong",
-      responseCode: 400
+      responseCode: 400,
+      success: false,
     });
   }
 }

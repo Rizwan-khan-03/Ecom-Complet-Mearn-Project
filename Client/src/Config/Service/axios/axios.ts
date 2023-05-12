@@ -20,6 +20,8 @@ axiosClient.interceptors.response.use(
 );
 
 export function getRequest(URL:string) {
+  console.log('getRequest',URL);
+  
   return axiosClient.get(`${AppConfig?.baseURL}${URL}`, AUTH_HEADERS()).then((response) => response);
 }
 

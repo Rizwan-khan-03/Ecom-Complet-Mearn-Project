@@ -4,8 +4,9 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import FilterSideBar from './FilterSideBar';
-import MobileList from './List';
-import { useDispatch } from 'react-redux';
+import GroceriesList from './List';
+import { getAllMobileList } from '../../../Config/Service/mobileService';
+import { useSelector, useDispatch } from 'react-redux';
 import * as action from './Reduxx/MobileAction';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -24,13 +25,13 @@ const FilterContainer = styled(Box)({
   },
   "&::-webkit-scrollbar-thumb": {
     backgroundColor: "#888"
-  }
+  },
+  backgroundColor:'#fff'
 });
 
-export default function Moblie() {
+export default function Grocery() {
   const [mobileList,setMobileList]=useState([])
   const dispatch = useDispatch();
-
   React.useEffect(() => {
     dispatch(action.getMobileListRequest(getListOfAllMobile));
   }, [])
@@ -41,7 +42,11 @@ export default function Moblie() {
       console.log(error);
     }
   }
-
+ 
+  const Container = styled(Grid)({
+    flexGrow: 1,
+    padding: "20px",
+  });
   return (
 
     <Box sx={{ flexGrow: 1, bgcolor: "#f1f2f6", height: '100vh', }}>
@@ -53,11 +58,7 @@ export default function Moblie() {
         </Grid>
         <Grid item xs={9} md={10}>
           <FilterContainer>
-            {
-              mobileList?.map((item, index) => (
-                <Item key={index + 1} ><MobileList data={item}/></Item>
-              ))
-            }
+          <GroceriesList data={mobileList}/>
           </FilterContainer>
         </Grid>
       </Grid>

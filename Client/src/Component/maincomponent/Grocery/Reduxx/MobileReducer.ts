@@ -1,4 +1,4 @@
-import * as action_type from '../Constant';
+import * as action_type from '../../../../store/Constant';
 
 interface AuthenticationState {
   loading: boolean;
@@ -13,23 +13,23 @@ const initialState: AuthenticationState = {
   data: null,
 };
 
-export  const authenticationReducer = (
+export  const mobileListReducer = (
   state: AuthenticationState = initialState,
   action: any
 ): AuthenticationState => {
   switch (action.type) {
-    case action_type.LOGIN_REQUEST:
+    case action_type.MOBILELIST_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case action_type.LOGIN_SUCCESS:
+    case action_type.MOBILELIST_SUCCESS:
       return {
         ...state,
         loading: false,
         data: action.data,
       };
-    case action_type.LOGIN_FAILURE:
+    case action_type.MOBILELIST_FAILURE:
       return {
         ...state,
         loading: false,

@@ -4,12 +4,10 @@ import * as action_type from '../Constant';
 import { loginUser } from "../../Config/Service/Service";
 
 export function* loginSaga(payload: any): Generator<any, any, any> {
-  yield put({ type: action_type.LOGIN_REQUEST});
   try {
     const result = yield loginUser(payload); // Assuming loginUser returns a promise
     // Access the value returned by loginUser
     if(result?.success){
-      console.log('loginUser result', result);
       // Dispatch login success action
       yield put({ type: action_type.LOGIN_SUCCESS ,data:result});
       return result; // Return the result
