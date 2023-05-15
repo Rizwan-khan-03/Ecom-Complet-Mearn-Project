@@ -226,7 +226,7 @@ export default function Layout() {
         </Grid>
       </Grid>
       <Grid item xs={12} md={12}>
-      <Box sx={{ flexGrow: 1, marginTop: '110px' }}>
+      <Box sx={{ flexGrow: 1, marginTop: '116px' }}>
         <Routes>
           {routepath.map((i: any, index: any) => {
             if (i.private) {

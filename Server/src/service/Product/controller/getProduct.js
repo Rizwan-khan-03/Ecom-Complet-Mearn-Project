@@ -8,13 +8,15 @@ module.exports = async (req, res) => {
 		res.status(200).send({
 			payload: others,
 			message: "product exist  ...",
-			responseCode: 200
+			responseCode: 200,
+			success:true
 		})
 	} catch (err) {
 		res.status(400).send({
 			payload: {},
 			message: "some thing is wrong",
-			responseCode: 400
+			responseCode: 40,
+			success:false
 		});
 	}
 }

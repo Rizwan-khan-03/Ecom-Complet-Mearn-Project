@@ -17,9 +17,7 @@ import Typography from '@mui/material/Typography';
 import { siedbarData } from "./data";
 
 export default function FilterSideBar() {
-    
     const [sections, setSections] = React.useState([...siedbarData]);
-
     const handleClick = (sectionId: any) => {
         setSections((prevSections) =>
             prevSections.map((section) =>
@@ -27,7 +25,6 @@ export default function FilterSideBar() {
             )
         );
     };
- 
     return (
         <List
             sx={{ width: "100%",  bgcolor: "background.paper", textAlign: "initial", paddingLeft: 0 , height: '100%'}}

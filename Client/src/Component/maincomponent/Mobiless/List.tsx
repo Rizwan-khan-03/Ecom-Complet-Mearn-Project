@@ -59,6 +59,9 @@ const Rating = styled("p")(({ theme }) => ({
         fill: "#FFC107",
         marginRight: theme.spacing(0.5),
     },
+    "& p": {
+       fontWeight: 900,
+    },
 }));
 
 const FeatureList = styled("ul")(({ theme }) => ({
@@ -72,13 +75,19 @@ const FeatureItem = styled("li")(({ theme }) => ({
     display: "flex",
     justifyContent: "start",
     alignItems: "center",
-    marginBottom: theme.spacing(1),
+    listStyleType: "circle",
+    // marginBottom: theme.spacing(1),
     "& ul li": {
-        fontWeight: 700,
+        fontWeight: 900,
         marginRight: theme.spacing(2),
         textAlign: 'start'
 
     },
+    "& span": {
+        paddingRight: '5px',
+        paddingLeft: '5px',
+        fontWeight: 900,
+    }
 }));
 type CustomButtonProps = {
     component?: React.ElementType;
@@ -87,7 +96,7 @@ type CustomButtonProps = {
 export default function MobileList({ data }: any) {
     return (
         <>
-            <Link to={''} style={{ textDecoration: 'none', }}>
+            <Link to={`/mobiles/${data?._id}`} style={{ textDecoration: 'none', }}>
                 <Box sx={{ flexGrow: 1 }}>
                     <Box >
                         <Grid container spacing={2}>
@@ -108,24 +117,20 @@ export default function MobileList({ data }: any) {
                                                 <path d="M12 16.3l-5.83 3.54 1.69-6.18L3.56 9.16l6.22-.54L12 3l2.22 5.62 6.22.54-4.3 3.53 1.69 6.18L12 16.3z" />
                                             </svg>
                                         </span>
-                                        <span>{data?.ratings?.totalRatings} Rating &amp; {data?.ratings?.totalReviews}  Reviews</span>
+                                        <p>{data?.ratings?.totalRatings} Rating &amp; {data?.ratings?.totalReviews}  Reviews</p>
                                     </Rating>
                                     <FeatureList>
-                                        <FeatureItem>
-                                            <ul>
-                                                <li> <span>{data?.features?.ram }</span> | <span>{data?.features?.rom}</span> | <span>Upto</span> |</li>
-                                                <li> <span>{data?.features?.screenSize }</span></li>
-                                                <li> <span>{data?.features?.secondaryCamera }</span>| <span>{data?.features?.primaryCamera }</span></li>
-                                                <li> <span> {data?.features?.batteryCapacity }</span></li>
-                                                <li> <span> {data?.features?.warranty }</span></li>
-                                            </ul>
-                                        </FeatureItem>
+                                        <FeatureItem> <span>{data?.features?.ram} {" "}</span>{" "} | {" "} <span>{data?.features?.rom}</span> | <span>Upto</span> | </FeatureItem>
+                                        <FeatureItem> <span>{data?.features?.screenSize}</span> </FeatureItem>
+                                        <FeatureItem> <span>{data?.features?.secondaryCamera}</span>| <span>{data?.features?.primaryCamera}</span> </FeatureItem>
+                                        <FeatureItem> <span> {data?.features?.batteryCapacity}</span> </FeatureItem>
+                                        <FeatureItem> <span> {data?.features?.warranty}</span> </FeatureItem>
                                     </FeatureList>
                                 </Item>
                             </Grid>
                             <Grid item xs={12} md={3}>
                                 <Item>
-                                    <MobileName>{`${data?.price}${" "} IN` }</MobileName>
+                                    <MobileName>{`${data?.price}${" "} IN`}</MobileName>
                                     <MobilePrice>
                                         <span style={{ paddingRight: '10px' }}>original price</span>
                                         <MobilePercent>{data?.discountPercentage}% off</MobilePercent>
