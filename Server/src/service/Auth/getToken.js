@@ -9,7 +9,7 @@ const getToken = async ({ id, isAdmin }) => {
           isAdmin: isAdmin,
         },
         process.env.JWT_SEC,
-        { expiresIn: "24h" },
+        { expiresIn: "365d" },
         (err, token) => {
           if (err) {
             reject(err);
