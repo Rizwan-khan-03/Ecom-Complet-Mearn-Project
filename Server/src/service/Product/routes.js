@@ -15,7 +15,7 @@ const {
 Router.post("/addproduct",verifyTokenAndAdmin, addProduct);
 
 // get product
-Router.get("/find/:id", verifyTokenAndAdmin,getProduct);
+Router.get("/:id", verifyTokenAndAdmin,getProduct);
 //update product
 Router.put("/update", verifyTokenAndAdmin,updateProduct);
 // get all user

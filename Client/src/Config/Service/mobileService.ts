@@ -12,3 +12,15 @@ export const getAllMobileList = async () => {
      return   console.error(error);
    }
  }
+ export const getAllMobileDetails = async (url:any) => {
+  try {
+      const response = await getRequest(`product/${url}`);
+   if (response) {    
+    return response;
+   } else {
+    throw new Error('get req error');
+   }
+ } catch (error) {
+   return   console.error(error);
+ }
+}

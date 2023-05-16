@@ -30,7 +30,7 @@ export default function FilterSideBar() {
  
     return (
         <List
-            sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper", textAlign: "initial", paddingLeft: 0 , height: '100%'}}
+            sx={{ width: "100%",  bgcolor: "background.paper", textAlign: "initial", paddingLeft: 0 , height: '100%'}}
             component="nav"
             aria-labelledby="nested-list-subheader"
             subheader={
