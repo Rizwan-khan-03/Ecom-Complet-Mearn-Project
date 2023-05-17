@@ -12,10 +12,11 @@ const getBasePath = require("../../getBasePath");
 
 module.exports = async (app) => {
   app.use("/api/user", userRoutes);
-   app.use("/api/product", productRoutes);
+  app.use("/api/product", productRoutes);
   app.use("/api/cart", CartRoutes);
-   app.use("/api/order", orderRoutes);
+  app.use("/api/order", orderRoutes);
+  app.use(express.static(path.join(__dirname, "../../Client/build/index.html")))
   app.get("*", (req, res) => {
-    res.sendFile(path.join(getBasePath, "static/index.html"));
+    res.sendFile(path.join(__dirname, "../../Client/build/index.html"));
   });
 };
