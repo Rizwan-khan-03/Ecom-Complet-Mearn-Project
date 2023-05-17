@@ -21,6 +21,6 @@ package-lock.json
 yarn.lock
 
 # Ignore build output
-build/
+# build/
 dist/
 out/
