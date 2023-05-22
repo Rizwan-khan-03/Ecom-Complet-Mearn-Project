@@ -12,7 +12,7 @@ export const getAllMobileList = async () => {
      return   console.error(error);
    }
  }
- export const getAllMobileDetails = async (url:any) => {
+ export const getMobileDetails = async (url:any) => {
   try {
       const response = await getRequest(`product/${url}`);
    if (response) {    

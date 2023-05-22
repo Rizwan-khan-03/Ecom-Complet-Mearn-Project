@@ -7,6 +7,7 @@ import FilterSideBar from './FilterSideBar';
 import MobileList from './List';
 import { useDispatch } from 'react-redux';
 import * as action from './Reduxx/MobileAction';
+import { useMediaQuery } from '@mui/material';
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -41,17 +42,19 @@ export default function Moblie() {
       console.log(error);
     }
   }
-
+  const isXsScreen = useMediaQuery((theme:any) => theme.breakpoints.down('md'));
   return (
 
     <Box sx={{ flexGrow: 1, bgcolor: "#f1f2f6", height: '100vh', }}>
       <Grid container spacing={1}>
-        <Grid item xs={3} md={2} >
-          <FilterContainer>
-            <FilterSideBar />
-          </FilterContainer>
+      <Grid item   md={2}>
+          {isXsScreen ? null : (
+            <FilterContainer>
+              <FilterSideBar />
+            </FilterContainer>
+          )}
         </Grid>
-        <Grid item xs={9} md={10}>
+        <Grid item  xs={12} sm={12} md={10}>
           <FilterContainer>
             {
               mobileList?.map((item, index) => (

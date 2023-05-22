@@ -1,7 +1,7 @@
 import { put } from 'redux-saga/effects';
 import { useNavigate } from 'react-router-dom';
 import * as action_type from '../../../../store/Constant';
-import { getAllMobileDetails, getAllMobileList } from '../../../../Config/Service/mobileService';
+import { getMobileDetails, getAllMobileList } from '../../../../Config/Service/mobileService';
 
 export function* mobileListSaga(payload: any): Generator<any, any, any> {
   try {
@@ -22,10 +22,8 @@ export function* mobileListSaga(payload: any): Generator<any, any, any> {
 }
 export function* mobileDetailsSaga(payload: any): Generator<any, any, any> {
   try {
-    console.log('mobileDetailsSaga payload',payload);
-    const result = yield getAllMobileDetails(payload?.id); // Assuming getAllMobileList returns a promise
+    const result = yield getMobileDetails(payload?.id); // Assuming getAllMobileList returns a promise
     // Access the value returned by getAllMobileList
-    console.log('mobileDetailsSaga result',result);
     
     if(result?.data?.success){
       payload.callback(result?.data)
@@ -38,5 +36,24 @@ export function* mobileDetailsSaga(payload: any): Generator<any, any, any> {
   } catch (error: any) {
     // Dispatch login failure action with error message
     yield put({ type: action_type.MOBILEDETAILS_FAILURE, error: error.message as string });
+  }
+}
+
+export function* cartSaga(payload: any): Generator<any, any, any> {
+  try {
+    console.log("cartSaga payload",payload);
+    yield put({ type: action_type.ADD_TO_CART_SUCCESS ,data:payload});
+    const result = yield getMobileDetails(payload?.itemId); // Assuming getAllMobileList returns a promise
+    // Access the value returned by getAllMobileList
+    if(result?.data?.success){
+      // Dispatch login success action
+      yield put({ type: action_type.ADD_TO_CART_SUCCESS ,data:result?.data?.payload});
+      return result; // Return the result
+    }else{
+      console.log(result?.message)
+    }
+  } catch (error: any) {
+    // Dispatch login failure action with error message
+    yield put({ type: action_type.ADD_TO_CART_FAILURE, error: error.message as string });
   }
 }

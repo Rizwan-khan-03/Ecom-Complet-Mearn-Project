@@ -6,7 +6,9 @@ import ImageListItem, {
   imageListItemClasses
 } from "@mui/material/ImageListItem";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-
+import { useNavigate, useParams } from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import * as action from './Reduxx/MobileAction';
 const theme = createTheme({
   breakpoints: {
     values: {
@@ -20,6 +22,15 @@ const theme = createTheme({
 });
 
 export default function MobileImg({ imgSrc }: any) {
+  const navigate =useNavigate()
+  const cartUrl:any=useParams()
+  const dispatch = useDispatch();
+  const gotToCart=async()=>{
+    navigate('/cart')
+    console.log("gotToCart");
+    dispatch(action.adCartRequest(cartUrl?.id));
+  }
+  
   return (
     <ThemeProvider theme={theme}>
       <Box
@@ -50,7 +61,7 @@ export default function MobileImg({ imgSrc }: any) {
 
       </Box>
       <Box sx={{ display: 'flex', justifyContent: "space-around", marginTop: '5px' }}>
-        <Button size="large" sx={{
+        <Button onClick={()=>gotToCart()}  size="large" sx={{
           backgroundColor: "#ff9f00",
           color: "#fff",
           width: "50%",
@@ -61,7 +72,7 @@ export default function MobileImg({ imgSrc }: any) {
             border:'1px solid #ff9f00'
           }
         }}>Add To Cart</Button>
-        <Button size="large" sx={{
+        <Button onClick={()=>gotToCart()} size="large" sx={{
           backgroundColor: "#fb641b",
           color: "#fff",
           width: "50%",

@@ -118,7 +118,6 @@ export default function MobileDetails({ data }: any) {
     }, [])
     const getMobileDetails = async (callbackdata: any) => {
         try {
-            console.log("callbackdata", callbackdata);
 
             setMobileData(callbackdata?.payload)
         } catch (error) {

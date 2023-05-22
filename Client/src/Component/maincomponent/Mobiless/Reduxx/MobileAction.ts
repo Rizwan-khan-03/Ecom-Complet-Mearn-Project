@@ -52,3 +52,32 @@ export const mobileDetailsFailure = (error: string): Action<string> => {
     payload: error
   };
 };
+
+// add to cart 
+export interface GetLoginAction extends Action<unknown> {
+  payload: unknown;
+  callback: (result: any) => void;
+}
+export const  adCartRequest = (itemId:any)=> {
+  return {
+    type: action_type.ADD_TO_CART_REQUEST,
+    itemId,
+    
+  };
+};
+
+
+// call inside mobilesaga 
+export const adCartSuccess = (payload:any): Action<undefined> => {
+  return {
+    type: action_type.ADD_TO_CART_SUCCESS,
+    payload: payload,
+  };
+};
+// call inside MOBILELISTsaga 
+export const adCartFailure = (error: string): Action<string> => {
+  return {
+    type: action_type.ADD_TO_CART_FAILURE,
+    payload: error
+  };
+};
