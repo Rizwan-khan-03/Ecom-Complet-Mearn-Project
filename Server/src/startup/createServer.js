@@ -27,7 +27,7 @@ const onError = (error) => {
       process.exit(1);
       break;
     case "EADDRINUSE":
-      logger.error(`${bind} is already in use`);
+      logger.error(`port ${bind} is already in use`);
       process.exit(1);
       break;
     default:

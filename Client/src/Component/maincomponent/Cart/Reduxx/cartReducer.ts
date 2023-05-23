@@ -3,14 +3,14 @@ import * as action_type from '../../../../store/Constant';
 interface AuthenticationState {
   loading: boolean;
   redirect: boolean;
-  cart: any;
+  cart: any[];
   error?: string;
 }
 
 const initialState: AuthenticationState = {
   loading: false,
   redirect: true,
-  cart: null,
+  cart: [],
 };
 
 export const cartReducer = (

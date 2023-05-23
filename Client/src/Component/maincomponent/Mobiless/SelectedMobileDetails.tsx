@@ -32,7 +32,7 @@ const FilterContainer = styled(Box)({
   }
 });
 const FilterContainerForImgList = styled(Box)({
-  height: "56vh",
+  height: "62vh",
   overflowY: "scroll",
   "&::-webkit-scrollbar": {
     width: "0.3em"
@@ -58,9 +58,9 @@ export default function SelectedMobileDetails() {
   }
 
   return (
-    <Box sx={{ flexGrow: 1,  height: '100vh', marginLeft: '5em', marginRight: "5em" }}>
+    <Box sx={{ flexGrow: 1,  height: '100vh', }}>
       <Grid container spacing={4}>
-        <Grid item xs={4} md={5} >
+        <Grid item xs={12} md={5} >
           {/*  */}
           <Grid container spacing={1}>
             <Grid item xs={3} md={3} >
@@ -73,7 +73,7 @@ export default function SelectedMobileDetails() {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={8} md={7}>
+        <Grid item xs={12} md={7}>
           <FilterContainer>
            <MobileDetails />
           </FilterContainer>

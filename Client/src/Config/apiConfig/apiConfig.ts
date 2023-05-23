@@ -3,7 +3,8 @@ import apiEndPoints from "./apiEndPoints";
 
 
 export const AppConfig = {
-  baseURL: "http://localhost:5000/api/",
+  // baseURL: "http://localhost:5000/api/",
+  baseURL: "https://elipskart-backend.onrender.com/",
   headers: {
     "Content-Type": "application/json; charset=utf-8",
     Accept: "application/json",
