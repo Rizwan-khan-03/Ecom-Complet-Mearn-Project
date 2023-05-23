@@ -28,7 +28,7 @@ root.render(
       <Provider store={store}>
         <ThemeProvider theme={theme}>
           <App /> {/* Replace App with your root component */}
-        </ThemeProvider>,
+        </ThemeProvider>
       </Provider>
       {/* <Toaster /> */}
       {/* </ProSidebarProvider> */}
