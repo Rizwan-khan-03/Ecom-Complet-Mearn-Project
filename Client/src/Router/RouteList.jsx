@@ -3,9 +3,7 @@ import Appliances from "../Component/maincomponent/Apliances/Appliances";
 import Beauty from "../Component/maincomponent/Beauty/Beauty";
 import Groceriess from "../Component/maincomponent/Grocery";
 import Mobiles from "../Component/maincomponent/Mobiless/Mobiles";
-import Product from "../Component/maincomponent/Products/Product";
 import Login from "../Pages/Login";
-import applinces from './img/applinces.jpg'
 import electronics from './img/elec.jpg'
 import fashion from './img/fashion.jpg'
 import furniture from './img/furniture.jpg'

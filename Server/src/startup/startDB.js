@@ -12,7 +12,7 @@ module.exports = async () => {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       autoIndex: true,
-      connectTimeoutMS: 100000,
+      connectTimeoutMS: 30000,
     });
     logger.info(`Connected to Database...`);
   } catch (err) {

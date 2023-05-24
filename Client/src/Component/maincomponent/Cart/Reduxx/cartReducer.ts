@@ -36,6 +36,27 @@ export const cartReducer = (
         loading: false,
         error: action.error,
       };
+      //REMOVE TO CART
+    case action_type.REMOVE_FROM_CART_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case action_type.REMOVE_FROM_CART_SUCCESS:
+      const itemId = action.data;
+      console.log('cart reducer itemId',itemId,action);
+      
+      return {
+        ...state,
+        loading: false,
+        cart: [...state.cart.filter((item) => item._id !== itemId)]
+      };
+    case action_type.REMOVE_FROM_CART_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
     default:
       return state;
   }
