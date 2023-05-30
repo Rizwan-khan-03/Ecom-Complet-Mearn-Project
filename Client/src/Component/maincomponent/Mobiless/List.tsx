@@ -93,7 +93,7 @@ type CustomButtonProps = {
     component?: React.ElementType;
     to: string;
 };
-export default function MobileList({ data }: any) {
+export default function MobileList({ data ,}: any) {
     return (
         <>
             <Link to={`/mobiles/${data?._id}`} style={{ textDecoration: 'none', }}>

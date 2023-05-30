@@ -132,9 +132,23 @@ function CartDtails() {
                     ))}
                   </Item>
                 </FilterContainer>
-
               </Grid>
-
+              <Grid xs={12} md={12}>
+              <PlaceOrder sx={{ marginBottom: '0', marginTop: '5px' }}>
+                <Box sx={{ display: 'flex', justifyContent: "flex-end", marginTop: '5px', }}>
+                  <Button size="large" sx={{
+                    backgroundColor: "#fb641b",
+                    color: "#fff",
+                    marginRight: '5px',
+                    '&:hover': {
+                      backgroundColor: "#fff",
+                      color: "#fb641b",
+                      border: '1px solid #fb641b'
+                    }
+                  }}>Place Order</Button> 
+                </Box>
+              </PlaceOrder>
+            </Grid>
             </Grid>
             <Grid item xs={12} md={4}>
               <Item>
@@ -181,24 +195,9 @@ function CartDtails() {
                 </Stack>
               </Item>
             </Grid>
-            <Grid xs={12} md={8} style={{ position: 'fixed', bottom: 0, width: '51%' }}>
-              <PlaceOrder sx={{ marginBottom: '0', marginTop: '5px' }}>
-                <Box sx={{ display: 'flex', justifyContent: "flex-end", marginTop: '5px' }}>
-                  <Button size="large" sx={{
-                    backgroundColor: "#fb641b",
-                    color: "#fff",
-                    width: "50%",
-                    marginLeft: '5px',
-                    '&:hover': {
-                      backgroundColor: "#fff",
-                      color: "#fb641b",
-                      border: '1px solid #fb641b'
-                    }
-                  }}>Place Order</Button>
-                </Box>
-              </PlaceOrder>
-            </Grid>
+           
           </Grid>
+          
         </Box>
       </Container >
 

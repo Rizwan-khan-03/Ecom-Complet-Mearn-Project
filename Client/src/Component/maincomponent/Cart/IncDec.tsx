@@ -16,14 +16,14 @@ const CounterComponent = () => {
   };
 
   return (
-    <div style={{ textAlign: 'start' ,margin:'10px'}}>
-      <Button variant="outlined" size="small" color="primary" onClick={handleDecrement}>
+    <div style={{  margin:'10px 10px 10px 40px'}}>
+      <Button style={{ padding: '2px', minWidth: 'unset' }} variant="outlined" size="small" color="primary" onClick={handleDecrement}>
         <RemoveCircleOutlineIcon style={{color:"#808080"}}/>
       </Button>
-      <Typography variant="h5" component="span" style={{ margin: '0 16px' }}>
+      <Typography variant="h6" component="span" style={{ margin: '0 16px' }}>
         {count}
       </Typography>
-      <Button variant="outlined" size="small"  color="primary" onClick={handleIncrement}>
+      <Button style={{ padding: '2px', minWidth: 'unset' }}  variant="outlined" size="small"  color="primary" onClick={handleIncrement}>
         <AddCircleOutlineIcon style={{color:"#808080"}}/>
       </Button>
     </div>

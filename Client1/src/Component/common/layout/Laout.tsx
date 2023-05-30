@@ -12,13 +12,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { clearStorage } from '../../../Config/Service/Service';
 import { Link } from 'react-router-dom';
 import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import CssBaseline from '@mui/material/CssBaseline';
-import FilterSideBar from '../../maincomponent/Grocery/FilterSideBar';
+
 import SideBar from './SideBar';
 // import { mobileData ,groceryData} from "../../../Config/data";
  import { data} from "../../../Config/data";
@@ -69,6 +63,14 @@ interface Props {
    */
   window?: () => Window;
 }
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+}));
 const drawerWidth = 240;
 const navItems = ['Home', 'About', 'Contact'];
 
@@ -290,7 +292,7 @@ useEffect(() => {
             </Toolbar>
             <Haeder />
           </AppBar>
-          <Box component="nav">
+          <Box component="nav">``
             <Drawer
               container={container}
               variant="temporary"
@@ -312,7 +314,9 @@ useEffect(() => {
         </Grid>
       </Grid>
       <Grid item xs={12} md={12}>
-        <Box sx={{ flexGrow: 1, marginTop: '116px' }}>
+        {/* <Box sx={{ flexGrow: 1, marginTop: '116px' }}> */}
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <DrawerHeader />
           <Routes>
             {routepath.map((i: any, index: any) => {
               if (i.private) {

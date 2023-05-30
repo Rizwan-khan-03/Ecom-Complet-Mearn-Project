@@ -159,11 +159,11 @@ export default function CartItems({ data }: any) {
                
                 <Box sx={{ display: 'flex', justifyContent: "space-between", }}>
                 <CounterComponent />
-                  <Button size="large" sx={{
+                  <Button size="small" sx={{
                     backgroundColor: "#e2232e",
                     color: "#fff",
-                    width:'150px',
-                    // padding:0,
+                    width:'auto',
+                     padding:"0 10px",
                     // padding:'10px',
                      margin: '10px',
                     '&:hover': {
