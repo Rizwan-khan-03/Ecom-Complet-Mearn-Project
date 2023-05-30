@@ -2,12 +2,16 @@
 const mongoose = require('mongoose');
 const ProductSchema = new mongoose.Schema(
   {
+    isAdmin: {
+      type: Boolean,
+      default: false
+  },
     title: { type: String, required: true, unique: true },
     desc: { type: String, required: true },
     brand: { type: String, required: true },
     available: { type: Boolean, required: true },
     img: { type: Buffer, required: true },
-    categories: { type: Array, required: true },
+    categories: { type: String, required: true },
     features: {
       ram: { type: String, required: true },
       rom: { type: String, required: true },

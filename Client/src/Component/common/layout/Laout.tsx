@@ -2,23 +2,17 @@ import  React,{useEffect} from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import { AppBar, Box, Toolbar, IconButton, Typography, InputBase, Badge, MenuItem, Menu, Grid, } from '@mui/material';
 import {
-  Menu as MenuIcon, Search as SearchIcon, AccountCircle, Mail as MailIcon, Notifications as NotificationsIcon, MoreVert as MoreIcon,
+  Menu as MenuIcon, Search as SearchIcon, AccountCircle , Notifications as NotificationsIcon, MoreVert as MoreIcon,
 } from '@mui/icons-material';
 import Haeder from '../Haeder';
 import { routepath } from '../../../Router/RouteList';
-import { Routes, Route, Navigate, useParams } from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 import PrivateRoute from '../../../Router/ProtectRoutes';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { clearStorage } from '../../../Config/Service/Service';
 import { Link } from 'react-router-dom';
 import Drawer from '@mui/material/Drawer';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
-import CssBaseline from '@mui/material/CssBaseline';
-import FilterSideBar from '../../maincomponent/Grocery/FilterSideBar';
+
 import SideBar from './SideBar';
 // import { mobileData ,groceryData} from "../../../Config/data";
  import { data} from "../../../Config/data";
@@ -70,7 +64,6 @@ interface Props {
   window?: () => Window;
 }
 const drawerWidth = 240;
-const navItems = ['Home', 'About', 'Contact'];
 
 export default function Layout(props: Props) {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -99,19 +92,7 @@ useEffect(() => {
 }, [url])
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  let minWidth: any = 0;
-  // function updateMinWidth() {
-  //   const element: any = document.querySelector('.layoutContainer');
-  //   minWidth = element?.offsetWidth;
-  //   console.log(minWidth);
-  // }
-  // window.addEventListener('resize', updateMinWidth);
-  // updateMinWidth();
-  // React.useEffect(() => {
-  //   const element: any = document.querySelector('.layoutContainer');
-
-  //   console.log("minWidth,", minWidth);
-  // }, [minWidth])
+ 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
@@ -311,7 +292,7 @@ useEffect(() => {
           {renderMenu}
         </Grid>
       </Grid>
-      <Grid item xs={12} md={12}>
+      <Grid  xs={12} md={12}>
         <Box sx={{ flexGrow: 1, marginTop: '116px' }}>
           <Routes>
             {routepath.map((i: any, index: any) => {
